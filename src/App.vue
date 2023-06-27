@@ -1,12 +1,17 @@
 <template>
   <div>
+    <nav-bar logo="Social" cor="green darken-1"/>
     <router-view/>
   </div>
 </template>
 
 <script>
+import NavBar from '@/components/layouts/NavBar';
 export default {
-  name: 'App'
+  name: 'app ',
+  components:{
+    NavBar
+  }
 }
 </script>
 
