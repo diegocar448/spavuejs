@@ -5,11 +5,13 @@
       <img src="https://www.designerd.com.br/wp-content/uploads/2013/06/criar-rede-social.png" class="responsive-img">
     </span>
     <span slot="principal">
-      <h2>Login</h2>
+      <h2>Cadastro</h2>
+      <input type="text" placeholder="Nome" value="">
       <input type="text" placeholder="E-mail" value="">
-      <input type="text" placeholder="Senha" value="">
-      <button class="btn">Entrar</button>
-      <router-link to="/cadastro" class="btn orange">Cadastre-se</router-link>
+      <input type="password" placeholder="Senha" value="">
+      <input type="password" placeholder="Confirme sua senha" value="">
+      <button class="btn">Enviar</button>
+      <router-link to="/login" class="btn orange">Já tenho conta</router-link>
     </span>
   </login-template>
 
@@ -20,10 +22,10 @@
 import LoginTemplate from '@/templates/LoginTemplate';
 
 export default {
-  name: 'Login',
+  name: 'Cadastro',
   data () {
     return {
-      cadastro: false,
+
     }
   },
   components:{
