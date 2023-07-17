@@ -41,7 +41,7 @@ import FooterVue from '@/components/layouts/FooterVue';
 import GridVue from '@/components/layouts/GridVue';
 import CardMenuVue from '@/components/layouts/CardMenuVue';
 export default {
-  name: 'SiteTemplate ',
+  name: 'SiteTemplate',
   components:{
     NavBar,
     FooterVue,
