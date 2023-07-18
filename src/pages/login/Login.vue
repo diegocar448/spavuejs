@@ -44,17 +44,24 @@ export default {
         console.log(response)
         if (response.data.token) {
           //login com sucesso
-          console.warning('login com sucesso')
+          console.log('login com sucesso')
         }else if(response.data.status == false){
           //login não existe
-          console.warning('login não existe')
+          console.log('login não existe')
+          alert('Login inválido!')
         }else{
           //erro de validação
-          console.error('erros de validação')
+          console.log('erros de validação')
+          let erros = '';
+          for (let erro of Object.values(response.data)) {
+            erros += erro +" "+" \n";
+          }
+          alert(erros)
         }
       })
       .catch(e => {
         console.log(e)
+        alert("Tente novamente mais tarde!");
         
       })        
     }
