@@ -42,6 +42,16 @@ export default {
       })
       .then(response => {
         console.log(response)
+        if (response.data.token) {
+          //login com sucesso
+          console.warning('login com sucesso')
+        }else if(response.data.status == false){
+          //login não existe
+          console.warning('login não existe')
+        }else{
+          //erro de validação
+          console.error('erros de validação')
+        }
       })
       .catch(e => {
         console.log(e)
