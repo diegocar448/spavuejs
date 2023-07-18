@@ -36,7 +36,6 @@ export default {
   methods:{
     login(){
       return axios.post('http://127.0.0.1:8000/api/login', {
-
         email: this.email,
         password: this.password,
       })
@@ -45,6 +44,7 @@ export default {
         if (response.data.token) {
           //login com sucesso          
           sessionStorage.setItem('usuario', JSON.stringify(response.data))
+          this.$router.push('/')
         }else if(response.data.status == false){
           //login não existe
           console.log('login não existe')
