@@ -58,11 +58,13 @@ export default {
     CardMenuVue,
   },
   created(){
-    console.log('created')    
-    if(!sessionStorage.getItem('usuario')){
-      this.$router.push('/login')
+    console.log('created')
+    let usuarioAux = sessionStorage.getItem('usuario');
+    if (usuarioAux) {
+      this.usuario = JSON.parse(usuarioAux);
+      this.$router.push('/')
     }else{
-      this.usuario = true
+      this.$router.push('/login')
     }
     
   },
@@ -70,7 +72,7 @@ export default {
     sair(){
       sessionStorage.clear();
       this.usuario=false;
-      this.$router.push('/login')
+      //this.$router.push('/login')
     }
   }
 }
