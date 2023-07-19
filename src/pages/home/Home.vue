@@ -49,7 +49,7 @@ export default {
   name: 'Home',
   data () {
     return {
-
+      usuario:false,
     }
   },
   components:{
@@ -58,6 +58,9 @@ export default {
     CardDetalheVue,
     PublicarConteudoVue,
     GridVue,
+  },
+  created(){
+    
   },
 }
 </script>

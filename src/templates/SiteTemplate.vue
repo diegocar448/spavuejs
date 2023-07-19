@@ -2,11 +2,10 @@
   <span>
 
     <header>
-      <nav-bar logo="Social" url="/" cor="green darken-1">
-        <li v-if="usuario"><router-link to="/">Home</router-link></li>
+      <nav-bar logo="Social" url="/" cor="green darken-1">        
         <li v-if="!usuario"><router-link to="/login">Entrar</router-link></li>
         <li v-if="!usuario"><router-link to="/cadastro">Cadastre-se</router-link></li>
-        <li v-if="usuario"><router-link to="/perfil">{{ usuario.name }}</router-link></li>
+        <li v-if="!usuario"><router-link to="/perfil">{{ usuario.name }}</router-link></li>
         <li v-if="usuario"><a v-on:click="sair()">Sair</a></li>
       </nav-bar>
     </header>
@@ -59,14 +58,13 @@ export default {
     CardMenuVue,
   },
   created(){
-    console.log('created')
-    let usuarioAux = sessionStorage.getItem('usuario');
-    if (usuarioAux) {
-      this.usuario = JSON.parse(usuarioAux);
-      this.$router.push('/')
-    }else{
+    console.log('created')    
+    if(!sessionStorage.getItem('usuario')){
       this.$router.push('/login')
+    }else{
+      this.usuario = true
     }
+    
   },
   methods:{
     sair(){
