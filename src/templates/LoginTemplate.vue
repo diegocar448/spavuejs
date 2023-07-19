@@ -57,18 +57,24 @@ export default {
   created(){
     console.log('created')
     let usuarioAux = sessionStorage.getItem('usuario');
-    if (usuarioAux) {
+    if (usuarioAux && this.$route.path !== '/login') {
       this.usuario = JSON.parse(usuarioAux);      
       this.$router.push('/')
     }else{
-      this.$router.push('/login')
+      console.log(this.$route.path)      
+      // Verifica se a rota atual é diferente da rota que você deseja recarregar
+      if (this.$route.path === '/login') {
+        
+      }
+      
     }
   },  
   methods:{
     sair(){
       sessionStorage.clear();
       this.usuario=false;
-      this.$router.push('/login')
+      //this.$router.push('/login')
+      this.$router.replace(this.$route.path = '/login');
     },
 
     
