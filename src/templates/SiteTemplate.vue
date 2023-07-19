@@ -63,16 +63,16 @@ export default {
     let usuarioAux = sessionStorage.getItem('usuario');
     if (usuarioAux) {
       this.usuario = JSON.parse(usuarioAux);
-      this.$router.push('/')
+      //this.$router.push('/')
     }else{
-      this.$router.push('/login')
+      //this.$router.push('/login')
     }
   },
   methods:{
     sair(){
       sessionStorage.clear();
       this.usuario=false;
-      this.$router.push('/login')
+      //this.$router.push('/login')
     }
   }
 }

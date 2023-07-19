@@ -2,8 +2,7 @@
   <span>
 
     <header>
-      <nav-bar logo="Social" url="/" cor="green darken-1">
-        <li v-if="usuario"><router-link to="/">Home</router-link></li>
+      <nav-bar logo="Social" url="/" cor="green darken-1">        
         <li v-if="!usuario"><router-link to="/login">Entrar</router-link></li>
         <li v-if="!usuario"><router-link to="/cadastro">Cadastre-se</router-link></li>
         <li v-if="usuario"><router-link to="/perfil">{{ usuario.name }}</router-link></li>
@@ -63,14 +62,17 @@ export default {
       this.$router.push('/')
     }else{
       this.$router.push('/login')
+
     }
-  },
+  },  
   methods:{
     sair(){
       sessionStorage.clear();
       this.usuario=false;
       this.$router.push('/login')
-    }
+    },
+
+    
   }
 }
 </script>
