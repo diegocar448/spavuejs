@@ -70,7 +70,19 @@
             }
         })
         .then(response => {                
-            console.log(response.data);            
+            if (response.data.token) {
+                //login com sucesso          
+                sessionStorage.setItem('usuario', JSON.stringify(response.data))
+                alert('Perfil atualizado!')
+            }else{
+                //erro de validação
+                console.log('erros de validação')
+                let erros = '';
+                for (let erro of Object.values(response.data)) {
+                    erros += erro +" "+" \n";
+                }
+                alert(erros)
+            }          
         })
         .catch(e => {
             console.log(e)
