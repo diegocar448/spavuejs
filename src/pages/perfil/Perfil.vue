@@ -59,8 +59,26 @@
     },
     methods:{
         perfil(){
+            axios.put('http://127.0.0.1:8000/api/perfil', {
+                name: this.name,
+                email: this.email,
+                password: this.password,
+                password_confirmation: this.password_confirmation,
+        }, {
+            "headers":{
+                "authorization": `Bearer ${this.usuario.token}`
+            }
+        })
+        .then(response => {                
+            console.log(response.data);            
+        })
+        .catch(e => {
+            console.log(e)
+            alert("tente novamente mais tarde!");
+            
+        })        
         }
-    }
+    },
     
       
   }
