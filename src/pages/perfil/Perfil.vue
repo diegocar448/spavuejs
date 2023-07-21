@@ -2,7 +2,7 @@
 
     <site-template>
       <span slot="menuesquerdo">
-        <img src="https://www.designerd.com.br/wp-content/uploads/2013/06/criar-rede-social.png" class="responsive-img">
+        <img :src="usuario.imagem" class="responsive-img">
       </span>
       <span slot="principal">
         <h2>Perfil</h2>
