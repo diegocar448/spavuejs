@@ -89,8 +89,9 @@
         })
         .then(response => {                
             if (response.data.token) {
-                //login com sucesso          
-                sessionStorage.setItem('usuario', JSON.stringify(response.data))
+                //login com sucesso   
+                this.usuario = response.data;       
+                sessionStorage.setItem('usuario', JSON.stringify(this.usuario))
                 alert('Perfil atualizado!')
             }else{
                 //erro de validação
