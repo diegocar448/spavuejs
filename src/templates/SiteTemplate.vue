@@ -18,7 +18,10 @@
               <slot name="menuesquerdo"></slot>
             </card-menu-vue>
             <card-menu-vue>
-              <h3>Teste</h3>
+              <h3>Amigos</h3>
+              <li>Ana</li>
+              <li>Isabella</li>
+              <li>Juliana</li>
             </card-menu-vue>
           </grid-vue>
           <grid-vue tamanho="8">
@@ -57,8 +60,7 @@ export default {
     GridVue,
     CardMenuVue,
   },
-  created(){
-    console.log('created')
+  created(){    
     let usuarioAux = sessionStorage.getItem('usuario');
     if (usuarioAux) {
       this.usuario = JSON.parse(usuarioAux);
