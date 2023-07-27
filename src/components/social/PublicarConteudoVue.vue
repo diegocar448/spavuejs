@@ -28,7 +28,11 @@ export default {
   },
   methods:{
     addConteudo(){
-      console.log('OK')
+      console.log(this.conteudo);
+      this.$http.post(this.$urlApi+'conteudo/adicionar', this.conteudo,
+      {
+        
+      })
     }
   }
 }
