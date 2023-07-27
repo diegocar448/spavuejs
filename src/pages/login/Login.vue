@@ -34,24 +34,23 @@ export default {
   },
 
   methods:{
-    login(){
-      return this.$http.post(this.$urlApi+login, {
+    login(){      
+      console.log(this.$urlApi+'login')
+      return this.$http.post(this.$urlApi+'login', {
         email: this.email,
         password: this.password,
       })
       .then(response => {
         console.log(response)
-        if (response.data.token) {
+        if (response.data.status) {
           //login com sucesso          
-          sessionStorage.setItem('usuario', JSON.stringify(response.data))
+          sessionStorage.setItem('usuario', JSON.stringify(response.data.usuario))
           this.$router.push('/')
-        }else if(response.data.status == false){
-          //login não existe
-          console.log('login não existe')
+        }else if(response.data.status == false && response.data.validacao){
+          //login não existe          
           alert('Login inválido!')
         }else{
-          //erro de validação
-          console.log('erros de validação')
+          //erro de validação          
           let erros = '';
           for (let erro of Object.values(response.data)) {
             erros += erro +" "+" \n";

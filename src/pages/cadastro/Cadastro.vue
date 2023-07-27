@@ -37,7 +37,7 @@ export default {
   },
   methods:{
     cadastro(){
-      return this.$http.post('http://127.0.0.1:8000/api/cadastro', {
+      return this.$http.post(this.$urlApi+'cadastro', {
         name: this.name,
         email: this.email,
         password: this.password,
@@ -45,23 +45,22 @@ export default {
       })
       .then(response => {
         console.log(response)
-        if (response.data.token) {
+        if (response.data.usuario) {
           //login com sucesso          
-          sessionStorage.setItem('usuario', JSON.stringify(response.data))
+          sessionStorage.setItem('usuario', JSON.stringify(response.data.usuario))
           alert("Cadastro realizado com sucesso!")
           this.$router.push('/')
-        }else if(response.data.status == false){
+        }else if(response.data.status == false && response.data.validacao){
           //login não existe
-          console.log('Erro no Cadastro')
-          alert('Erro no Cadastro! Tente novamente mais tarde')
-        }else{
-          //erro de validação
           console.log('erros de validação')
           let erros = '';
-          for (let erro of Object.values(response.data)) {
+          for (let erro of Object.values(response.data.erros)) {
             erros += erro +" "+" \n";
           }
-          alert(erros)
+          alert(erros)          
+        }else{
+          //erro de validação
+          alert('Erro no Cadastro! Tente novamente mais tarde')          
         }
       })
       .catch(e => {

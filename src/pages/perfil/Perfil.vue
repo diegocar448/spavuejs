@@ -76,7 +76,7 @@
             console.log(this.imagem)
         },
         perfil(){
-            this.$http.put(`${this.urlApi+perfil}`, {
+            this.$http.put(this.$urlApi+'perfil', {
                 name: this.name,
                 email: this.email,
                 password: this.password,
@@ -88,16 +88,18 @@
             }
         })
         .then(response => {                
-            if (response.data.token) {
+            if (response.data.status) {
                 //login com sucesso   
-                this.usuario = response.data;       
+                this.usuario = response.data.usuario;       
                 sessionStorage.setItem('usuario', JSON.stringify(this.usuario))
+                console.log('aqui if')
                 alert('Perfil atualizado!')
-            }else{
+            }else if(response.data.status === false && response.data.validacao){
                 //erro de validação
+                console.log('aqui else if')
                 console.log('erros de validação')
                 let erros = '';
-                for (let erro of Object.values(response.data)) {
+                for (let erro of Object.values(response.data.errors)) {
                     erros += erro +" "+" \n";
                 }
                 alert(erros)
