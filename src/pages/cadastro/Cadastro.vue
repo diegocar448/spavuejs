@@ -37,7 +37,7 @@ export default {
   },
   methods:{
     cadastro(){
-      return axios.post('http://127.0.0.1:8000/api/cadastro', {
+      return this.$http.post('http://127.0.0.1:8000/api/cadastro', {
         name: this.name,
         email: this.email,
         password: this.password,
